@@ -22,7 +22,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "mockupItems": {
+      "type": "hasMany",
+      "model": "MockupItem",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }

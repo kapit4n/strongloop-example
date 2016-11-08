@@ -576,6 +576,8 @@ paths:
 
                 - `user` - `U+007BUserU+007D` - Data of the currently logged in user. (`include=user`)
 
+
+
             type: object
       deprecated: false
   /Users/logout:
@@ -646,6 +648,176 @@ paths:
             properties:
               greeting:
                 type: string
+      deprecated: false
+  '/mockups/{id}/mockupItems/{fk}':
+    get:
+      tags:
+        - mockup
+      summary: Find a related item by id for mockupItems.
+      operationId: mockup.prototype.__findById__mockupItems
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for mockupItems
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    delete:
+      tags:
+        - mockup
+      summary: Delete a related item by id for mockupItems.
+      operationId: mockup.prototype.__destroyById__mockupItems
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for mockupItems
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - mockup
+      summary: Update a related item by id for mockupItems.
+      operationId: mockup.prototype.__updateById__mockupItems
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for mockupItems
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/MockupItem'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+  '/mockups/{id}/mockupItems':
+    get:
+      tags:
+        - mockup
+      summary: Queries mockupItems of mockup.
+      operationId: mockup.prototype.__get__mockupItems
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MockupItem'
+      deprecated: false
+    post:
+      tags:
+        - mockup
+      summary: Creates a new instance in mockupItems of this model.
+      operationId: mockup.prototype.__create__mockupItems
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/MockupItem'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    delete:
+      tags:
+        - mockup
+      summary: Deletes all mockupItems of this model.
+      operationId: mockup.prototype.__delete__mockupItems
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/mockups/{id}/mockupItems/count':
+    get:
+      tags:
+        - mockup
+      summary: Counts mockupItems of mockup.
+      operationId: mockup.prototype.__count__mockupItems
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
       deprecated: false
   /mockups:
     post:
@@ -1009,6 +1181,176 @@ paths:
           in: query
           description: Criteria to match model instances
           required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/projects/{id}/mockups/{fk}':
+    get:
+      tags:
+        - project
+      summary: Find a related item by id for mockups.
+      operationId: project.prototype.__findById__mockups
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for mockups
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    delete:
+      tags:
+        - project
+      summary: Delete a related item by id for mockups.
+      operationId: project.prototype.__destroyById__mockups
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for mockups
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - project
+      summary: Update a related item by id for mockups.
+      operationId: project.prototype.__updateById__mockups
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for mockups
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/mockup'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+  '/projects/{id}/mockups':
+    get:
+      tags:
+        - project
+      summary: Queries mockups of project.
+      operationId: project.prototype.__get__mockups
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/mockup'
+      deprecated: false
+    post:
+      tags:
+        - project
+      summary: Creates a new instance in mockups of this model.
+      operationId: project.prototype.__create__mockups
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/mockup'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    delete:
+      tags:
+        - project
+      summary: Deletes all mockups of this model.
+      operationId: project.prototype.__delete__mockups
+      parameters:
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/projects/{id}/mockups/count':
+    get:
+      tags:
+        - project
+      summary: Counts mockups of project.
+      operationId: project.prototype.__count__mockups
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
           type: string
           format: JSON
       responses:
@@ -1818,35 +2160,6 @@ definitions:
     required:
       - email
     additionalProperties: false
-  mockup:
-    properties:
-      id:
-        type: number
-        format: double
-      name:
-        type: string
-      description:
-        type: number
-        format: double
-    required:
-      - id
-      - name
-    additionalProperties: false
-  project:
-    properties:
-      name:
-        description: Name oif the project
-        type: string
-      description:
-        description: Description of the project
-        type: string
-      id:
-        description: This is the Id of the project
-        type: number
-        format: double
-    required:
-      - id
-    additionalProperties: false
   MockupItem:
     properties:
       id:
@@ -1859,6 +2172,38 @@ definitions:
         type: number
         format: double
       mockupId:
+        type: number
+        format: double
+    required:
+      - id
+    additionalProperties: false
+  Mockup:
+    properties:
+      id:
+        type: number
+        format: double
+      name:
+        type: string
+      description:
+        type: number
+        format: double
+      projectId:
+        type: number
+        format: double
+    required:
+      - id
+      - name
+    additionalProperties: false
+  Project:
+    properties:
+      name:
+        description: Name oif the project
+        type: string
+      description:
+        description: Description of the project
+        type: string
+      id:
+        description: This is the Id of the project
         type: number
         format: double
     required:

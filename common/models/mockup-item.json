@@ -18,10 +18,6 @@
     "positionY": {
       "type": "number",
       "required": false
-    },
-    "mockupId": {
-      "type": "number",
-      "required": false
     }
   },
   "validations": [],
