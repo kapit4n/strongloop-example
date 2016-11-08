@@ -1,12 +1,29 @@
 {
   "name": "project",
-  "plural": "yes",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": false,
+      "description": "Name oif the project"
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "Description of the project"
+    },
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true,
+      "index": true,
+      "description": "This is the Id of the project"
+    }
+  },
   "validations": [],
   "relations": {},
   "acls": [],

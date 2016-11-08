@@ -1,0 +1,31 @@
+{
+  "name": "MockupItem",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "positionX": {
+      "type": "number",
+      "required": false
+    },
+    "positionY": {
+      "type": "number",
+      "required": false
+    },
+    "mockupId": {
+      "type": "number",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

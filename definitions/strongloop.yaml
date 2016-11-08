@@ -647,7 +647,381 @@ paths:
               greeting:
                 type: string
       deprecated: false
-  /yes:
+  /mockups:
+    post:
+      tags:
+        - mockup
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: mockup.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    put:
+      tags:
+        - mockup
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: mockup.upsert__put_mockups
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    patch:
+      tags:
+        - mockup
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: mockup.upsert__patch_mockups
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    get:
+      tags:
+        - mockup
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: mockup.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/mockup'
+      deprecated: false
+  /mockups/replaceOrCreate:
+    post:
+      tags:
+        - mockup
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: mockup.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+  /mockups/upsertWithWhere:
+    post:
+      tags:
+        - mockup
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: mockup.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+  '/mockups/{id}/exists':
+    get:
+      tags:
+        - mockup
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'mockup.exists__get_mockups_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/mockups/{id}':
+    head:
+      tags:
+        - mockup
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'mockup.exists__head_mockups_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - mockup
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: mockup.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    delete:
+      tags:
+        - mockup
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: mockup.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - mockup
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: 'mockup.prototype.updateAttributes__put_mockups_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/mockup'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+    patch:
+      tags:
+        - mockup
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: 'mockup.prototype.updateAttributes__patch_mockups_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/mockup'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+  '/mockups/{id}/replace':
+    post:
+      tags:
+        - mockup
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: mockup.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+  /mockups/findOne:
+    get:
+      tags:
+        - mockup
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: mockup.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/mockup'
+      deprecated: false
+  /mockups/update:
+    post:
+      tags:
+        - mockup
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: mockup.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/mockup'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /mockups/count:
+    get:
+      tags:
+        - mockup
+      summary: Count instances of the model matched by where from the data source.
+      operationId: mockup.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /projects:
     post:
       tags:
         - project
@@ -673,7 +1047,7 @@ paths:
       summary: >-
         Patch an existing model instance or insert a new one into the data
         source.
-      operationId: project.upsert__put_yes
+      operationId: project.upsert__put_projects
       parameters:
         - name: data
           in: body
@@ -694,7 +1068,7 @@ paths:
       summary: >-
         Patch an existing model instance or insert a new one into the data
         source.
-      operationId: project.upsert__patch_yes
+      operationId: project.upsert__patch_projects
       parameters:
         - name: data
           in: body
@@ -729,7 +1103,7 @@ paths:
             items:
               $ref: '#/definitions/project'
       deprecated: false
-  /yes/replaceOrCreate:
+  /projects/replaceOrCreate:
     post:
       tags:
         - project
@@ -751,7 +1125,7 @@ paths:
           schema:
             $ref: '#/definitions/project'
       deprecated: false
-  /yes/upsertWithWhere:
+  /projects/upsertWithWhere:
     post:
       tags:
         - project
@@ -779,12 +1153,12 @@ paths:
           schema:
             $ref: '#/definitions/project'
       deprecated: false
-  '/yes/{id}/exists':
+  '/projects/{id}/exists':
     get:
       tags:
         - project
       summary: Check whether a model instance exists in the data source.
-      operationId: 'project.exists__get_yes_{id}_exists'
+      operationId: 'project.exists__get_projects_{id}_exists'
       parameters:
         - name: id
           in: path
@@ -801,12 +1175,12 @@ paths:
               exists:
                 type: boolean
       deprecated: false
-  '/yes/{id}':
+  '/projects/{id}':
     head:
       tags:
         - project
       summary: Check whether a model instance exists in the data source.
-      operationId: 'project.exists__head_yes_{id}'
+      operationId: 'project.exists__head_projects_{id}'
       parameters:
         - name: id
           in: path
@@ -871,7 +1245,7 @@ paths:
       summary: >-
         Patch attributes for a model instance and persist it into the data
         source.
-      operationId: 'project.prototype.updateAttributes__put_yes_{id}'
+      operationId: 'project.prototype.updateAttributes__put_projects_{id}'
       parameters:
         - name: data
           in: body
@@ -898,7 +1272,7 @@ paths:
       summary: >-
         Patch attributes for a model instance and persist it into the data
         source.
-      operationId: 'project.prototype.updateAttributes__patch_yes_{id}'
+      operationId: 'project.prototype.updateAttributes__patch_projects_{id}'
       parameters:
         - name: data
           in: body
@@ -919,7 +1293,7 @@ paths:
           schema:
             $ref: '#/definitions/project'
       deprecated: false
-  '/yes/{id}/replace':
+  '/projects/{id}/replace':
     post:
       tags:
         - project
@@ -947,7 +1321,7 @@ paths:
           schema:
             $ref: '#/definitions/project'
       deprecated: false
-  /yes/findOne:
+  /projects/findOne:
     get:
       tags:
         - project
@@ -966,7 +1340,7 @@ paths:
           schema:
             $ref: '#/definitions/project'
       deprecated: false
-  /yes/update:
+  /projects/update:
     post:
       tags:
         - project
@@ -998,12 +1372,386 @@ paths:
                 type: number
                 format: double
       deprecated: false
-  /yes/count:
+  /projects/count:
     get:
       tags:
         - project
       summary: Count instances of the model matched by where from the data source.
       operationId: project.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /MockupItems:
+    post:
+      tags:
+        - MockupItem
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: MockupItem.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    put:
+      tags:
+        - MockupItem
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: MockupItem.upsert__put_MockupItems
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    patch:
+      tags:
+        - MockupItem
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: MockupItem.upsert__patch_MockupItems
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    get:
+      tags:
+        - MockupItem
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: MockupItem.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MockupItem'
+      deprecated: false
+  /MockupItems/replaceOrCreate:
+    post:
+      tags:
+        - MockupItem
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: MockupItem.replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+  /MockupItems/upsertWithWhere:
+    post:
+      tags:
+        - MockupItem
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: MockupItem.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+  '/MockupItems/{id}/exists':
+    get:
+      tags:
+        - MockupItem
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'MockupItem.exists__get_MockupItems_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/MockupItems/{id}':
+    head:
+      tags:
+        - MockupItem
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'MockupItem.exists__head_MockupItems_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - MockupItem
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: MockupItem.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    delete:
+      tags:
+        - MockupItem
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: MockupItem.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - MockupItem
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: 'MockupItem.prototype.updateAttributes__put_MockupItems_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/MockupItem'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+    patch:
+      tags:
+        - MockupItem
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: 'MockupItem.prototype.updateAttributes__patch_MockupItems_{id}'
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/MockupItem'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+  '/MockupItems/{id}/replace':
+    post:
+      tags:
+        - MockupItem
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: MockupItem.replaceById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+  /MockupItems/findOne:
+    get:
+      tags:
+        - MockupItem
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: MockupItem.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/MockupItem'
+      deprecated: false
+  /MockupItems/update:
+    post:
+      tags:
+        - MockupItem
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: MockupItem.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/MockupItem'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /MockupItems/count:
+    get:
+      tags:
+        - MockupItem
+      summary: Count instances of the model matched by where from the data source.
+      operationId: MockupItem.count
       parameters:
         - name: where
           in: query
@@ -1070,11 +1818,51 @@ definitions:
     required:
       - email
     additionalProperties: false
-  project:
+  mockup:
     properties:
       id:
         type: number
         format: double
+      name:
+        type: string
+      description:
+        type: number
+        format: double
+    required:
+      - id
+      - name
+    additionalProperties: false
+  project:
+    properties:
+      name:
+        description: Name oif the project
+        type: string
+      description:
+        description: Description of the project
+        type: string
+      id:
+        description: This is the Id of the project
+        type: number
+        format: double
+    required:
+      - id
+    additionalProperties: false
+  MockupItem:
+    properties:
+      id:
+        type: number
+        format: double
+      positionX:
+        type: number
+        format: double
+      positionY:
+        type: number
+        format: double
+      mockupId:
+        type: number
+        format: double
+    required:
+      - id
     additionalProperties: false
 basePath: /api
 swagger: '2.0'

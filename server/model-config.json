@@ -35,7 +35,15 @@
   "Message": {
     "dataSource": null
   },
+  "mockup": {
+    "dataSource": "db",
+    "public": true
+  },
   "project": {
+    "dataSource": "db",
+    "public": true
+  },
+  "MockupItem": {
     "dataSource": "db",
     "public": true
   }
